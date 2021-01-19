@@ -4,6 +4,7 @@ package com.automationpractice;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -29,14 +30,13 @@ public class signUp {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		driver.manage().window().setSize(new Dimension(1024, 768));
 		driver.get("http://automationpractice.com/index.php");
 		homePage = new HomePage(driver);
 		authPage = new AuthPage(driver);
 		formPage = new Form(driver);
-		
 		homePage.clickOnSignin();
-		authPage.typeInEmail("xxxxx@xxxx.com");
+		authPage.typeInEmail("xxxxxx@xxxxx.com");
 	}
 
 	
