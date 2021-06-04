@@ -58,7 +58,7 @@ public class signUp {
 
 @Test
 	public void happyScenario() {
-	    authPage.typeInEmail("lllllkxxxjhkg@xxxxx.com");
+	    authPage.typeInEmail("Example12345@xxxxx.com");
 		formPage.clickOnMr();
 		formPage.insertInfo1("Laila", "Mansour", "123456");
 		formPage.Checkboxed();
