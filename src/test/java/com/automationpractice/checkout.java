@@ -10,9 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.AuthPage;
-import pages.Form;
-import pages.HomePage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 //import sun.rmi.runtime.NewThreadAction;
@@ -23,8 +21,11 @@ public class checkout {
 	HomePage homePage;
 	AuthPage authPage;
 	Form formPage;
+	AccountPage accountPage;
+	CategoriesPage categoriesPage;
+	CheckoutPage checkoutPage;
 	
-	@BeforeClass
+	@BeforeMethod
 	public void startUp() {
 
 		WebDriverManager.chromedriver().setup();
@@ -34,41 +35,45 @@ public class checkout {
 		homePage = new HomePage(driver);
 		authPage = new AuthPage(driver);
 		formPage = new Form(driver);
-
+		accountPage = new AccountPage(driver);
+		categoriesPage = new CategoriesPage(driver);
+		checkoutPage = new CheckoutPage(driver);
+		driver.navigate().to("http://automationpractice.com/index.php");
+		homePage.clickOnSignin();
+		authPage.typeSignin("xxxjhg@xxxxx.com","123456");
 
 	}
 
     @AfterMethod
-	public void Endsession() {
+	public void EndSession() {
 		driver.quit();
 
 	}
-    @BeforeMethod
-	public void Precondition() {
-		driver.navigate().to("http://automationpractice.com/index.php");
-		homePage.clickOnSignin();
 
-	}
 	
 	@Test
-	public void formValidation() {
-		authPage.typeSignin("xxxjhg@xxxxx.com","123456");
-
-
+	public void selectBlousesSubcategoryandAddProductToTheCart() {
+		accountPage.clickOnWomenCategory();
+		categoriesPage.clickOnTopsCategory();
+		categoriesPage.clickOnBlousesCategory();
+		categoriesPage.clickOnBlousesProduct();
+		categoriesPage.clickOnAddToCartButton();
 	}
+   @Test(dependsOnMethods = {"selectBlousesSubcategoryandAddProductToTheCart"})
+   public void followCheckoutProcedure() {
+	   driver.navigate().to("http://automationpractice.com/index.php");
+	   homePage.clickOnCartBtn();
+	   checkoutPage.clickOnSummaryProceedToCheckoutBtn();
+	   checkoutPage.clickOnAddressProceedToCheckoutBtn2();
+	   checkoutPage.clickOnAgreeCheckbox();
+	   checkoutPage.clickOnShippingProceedToCheckoutBtn3();
+	   checkoutPage.clickOnPayByBankWire();
+	   checkoutPage.clickOnConfirmOrderBtn();
+   }
+
+   
 
 
-@Test
-	public void happyScenario() {
-	    authPage.typeInEmail("xxxjhg@xxxxx.com");
-		formPage.clickOnMr();
-		formPage.insertInfo1("Laila", "Mansour", "123456");
-		formPage.Checkboxed();
-		formPage.insertInfo2("Laila","Mansour","NewCairo","Vodafone","Katamya");
-		formPage.insertAddressDetails("Cairo", "11355", "01122122121", "NewCairo2","01155555555");
-		formPage.DropDownList();
-		formPage.ClickRegister();
-}
 
 
 

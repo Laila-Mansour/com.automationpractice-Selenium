@@ -14,54 +14,54 @@ public class Form {
 	}
 	
 	//Variables
-	WebDriver driver;
+    private WebDriver driver;
 	
 	//Elements
-	By personalInfoText = By.xpath("//h3[text()='Your personal information']");
+	    private By personalInfoText = By.xpath("//h3[text()='Your personal information']");
 	
 		//Gender
-		By male = By.id("id_gender1");
-		By female = By.id("id_gender2");
+		private By male = By.id("id_gender1");
+	    private By female = By.id("id_gender2");
 		
 		//Input Data
-		By personalfirstName = By.id("customer_firstname");
-		By personallastName = By.id("customer_lastname");
-		By personalEmail = By.id("email");
-		By personalPassword = By.id("passwd");
+		private By personalfirstName = By.id("customer_firstname");
+	    private By personallastName = By.id("customer_lastname");
+	    private By personalEmail = By.id("email");
+	    private By personalPassword = By.id("passwd");
 		
 		//Date of Birth
-		By day = By.id("days");
-		By month = By.id("months");
-		By year = By.id("years");
+		private By day = By.id("days");
+	   private By month = By.id("months");
+	   private By year = By.id("years");
 		
 		//checkboxes
-		By newsletter = By.id("newsletter");
-		By specialOffers = By.id("optin");
+		private By newsletter = By.id("newsletter");
+	   private By specialOffers = By.id("optin");
 	
 	//Your Address
-		By addressFirstName = By.id("firstname");
-		By addressLastName = By.id("lastname");
-		By addressCompany = By.id("company");
-		By addressAddress1 = By.id("address1");
-		By addressAddress2 = By.id("address2");
-		By addressCity = By.id("city");
+	private By addressFirstName = By.id("firstname");
+	private By addressLastName = By.id("lastname");
+	private By addressCompany = By.id("company");
+	private	By addressAddress1 = By.id("address1");
+	private	By addressAddress2 = By.id("address2");
+	private	By addressCity = By.id("city");
 		
 		//State
-		By addressState = By.xpath("//*[@id=\"id_state\"]");
+		private	By addressState = By.xpath("//*[@id=\"id_state\"]");
 
 		/*
 		Select stateValue = new Select(driver.findElement(addressState));
 		stateValue.selectByVisibleText("Alabama");*/
 
-		
-		By addressPostalCode = By.id("postcode");
-		By addressCountry = By.id("id_country");
-		By additionalinfo = By.id("other");
-		By phone1 = By.id("phone");
-		By phone2 = By.id("phone_mobile");
-		By addressAlias = By.id("alias");
-		
-	By submitBtn = By.id("submitAccount");	
+
+	private By addressPostalCode = By.id("postcode");
+	private By addressCountry = By.id("id_country");
+	private	By additionalinfo = By.id("other");
+	private	By phone1 = By.id("phone");
+	private	By phone2 = By.id("phone_mobile");
+	private	By addressAlias = By.id("alias");
+
+	private By submitBtn = By.id("submitAccount");
 	
 	//Actions
 	public void clickOnMr() {
@@ -122,8 +122,6 @@ public class Form {
 	public String ValidateAddressName(){
 		return driver.findElement(addressFirstName).getText();
 	}
-	public String ValidateAddressName2(){
-		return driver.findElement(addressLastName).getText();
-	}
+	public String ValidateAddressName2(){ return driver.findElement(addressLastName).getText(); }
 
 }

@@ -8,14 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 public class AuthPage {
 		
 		//Variables
-		WebDriver driver;
+		private WebDriver driver;
 		
 		//Elements
-		By emailField = By.id("email_create");
-		By SubmitBtn = By.id("SubmitCreate");
-		By AlertMsg = By.id("create_account_error");
-		By emailSignin = By.id("email");
-		By passSignin = By.id("passwd");
+		private By emailField = By.id("email_create");
+	    private By SubmitBtn = By.id("SubmitCreate");
+	    private By AlertMsg = By.id("create_account_error");
+	    private By emailSignin = By.id("email");
+	    private By passSignin = By.id("passwd");
 
 		
 		//Constructor

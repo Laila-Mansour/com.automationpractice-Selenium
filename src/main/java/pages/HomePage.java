@@ -8,7 +8,7 @@ public class HomePage {
 
 	
 	//Variables
-	WebDriver driver;
+	private	WebDriver driver;
 	
 	
 	//Constructor
@@ -19,11 +19,15 @@ public class HomePage {
 	
 	
 	//Elements
-	By signinBtn = By.linkText("Sign in");
+	private By signinBtn = By.linkText("Sign in");
+	private By CartBtn = By.className("shopping_cart");
 	
 	//Actions
 	public void clickOnSignin() {
 		driver.findElement(signinBtn).click();
+	}
+	public void clickOnCartBtn() {
+		driver.findElement(CartBtn).click();
 	}
 	
 

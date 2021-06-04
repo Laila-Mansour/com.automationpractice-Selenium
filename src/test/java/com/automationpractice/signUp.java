@@ -15,7 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.AuthPage;
 import pages.Form;
 import pages.HomePage;
-//import sun.rmi.runtime.NewThreadAction;
+
 
 public class signUp {
 	
@@ -24,7 +24,7 @@ public class signUp {
 	pages.AuthPage authPage;
 	pages.Form formPage;
 	
-	@BeforeClass
+	@BeforeMethod
 	public void startUp() {
 
 		WebDriverManager.chromedriver().setup();
@@ -34,24 +34,23 @@ public class signUp {
 		homePage = new HomePage(driver);
 		authPage = new AuthPage(driver);
 		formPage = new Form(driver);
-
-
-	}
-
-    @AfterMethod
-	public void Endsession() {
-		driver.quit();
-
-	}
-    @BeforeMethod
-	public void Precondition() {
 		driver.navigate().to("http://automationpractice.com/index.php");
 		homePage.clickOnSignin();
 	}
+
+    @AfterClass
+	public void Endsession() {
+		driver.quit();
+	}
+	@AfterMethod
+	public void CloseBrowser() {
+		driver.close();
+	}
+
 	
 	@Test
 	public void formValidation() {
-		authPage.typeInEmail("LLLLxx@xxxxx.com");
+		authPage.typeInEmail("kkLLLLxx@xxxxx.com");
 		Assert.assertEquals(formPage.validationText(), "YOUR PERSONAL INFORMATION");
 
 	}
@@ -59,7 +58,7 @@ public class signUp {
 
 @Test
 	public void happyScenario() {
-	    authPage.typeInEmail("xxxjhg@xxxxx.com");
+	    authPage.typeInEmail("lllllkxxxjhkg@xxxxx.com");
 		formPage.clickOnMr();
 		formPage.insertInfo1("Laila", "Mansour", "123456");
 		formPage.Checkboxed();
@@ -69,7 +68,7 @@ public class signUp {
 		formPage.ClickRegister();
 }
 
-@Test
+   //@Test
 	public void InvalidMail(){
 	authPage.typeInEmail("xxxxxx");
 	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
