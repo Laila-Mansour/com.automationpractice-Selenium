@@ -1,28 +1,28 @@
 package com.automationpractice;
 
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.*;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.AuthPage;
 import pages.Form;
 import pages.HomePage;
+
+import java.util.concurrent.TimeUnit;
 //import sun.rmi.runtime.NewThreadAction;
 
-public class signUp {
+public class checkout {
 	
 	WebDriver driver;
-	pages.HomePage homePage;
-	pages.AuthPage authPage;
-	pages.Form formPage;
+	HomePage homePage;
+	AuthPage authPage;
+	Form formPage;
 	
 	@BeforeClass
 	public void startUp() {
@@ -47,12 +47,13 @@ public class signUp {
 	public void Precondition() {
 		driver.navigate().to("http://automationpractice.com/index.php");
 		homePage.clickOnSignin();
+
 	}
 	
 	@Test
 	public void formValidation() {
-		authPage.typeInEmail("LLLLxx@xxxxx.com");
-		Assert.assertEquals(formPage.validationText(), "YOUR PERSONAL INFORMATION");
+		authPage.typeSignin("xxxjhg@xxxxx.com","123456");
+
 
 	}
 
@@ -69,14 +70,7 @@ public class signUp {
 		formPage.ClickRegister();
 }
 
-@Test
-	public void InvalidMail(){
-	authPage.typeInEmail("xxxxxx");
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	Assert.assertEquals(authPage.validationAlert(),"Invalid email address.");
 
-
-}
 
 }
 
