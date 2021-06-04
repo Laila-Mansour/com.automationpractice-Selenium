@@ -71,7 +71,7 @@ public class checkout {
 	   checkoutPage.clickOnPayByBankWire();
 	   checkoutPage.clickOnConfirmOrderBtn();
    }
-    @Test
+    @Test(dependsOnMethods = {"followCheckoutProcedure"})
 	public void ValidateOrderAasPlaced() {
 		driver.navigate().to("http://automationpractice.com/index.php?controller=history");
 		 By OrderDetails = By.xpath("//*[@class='first_item ']");
